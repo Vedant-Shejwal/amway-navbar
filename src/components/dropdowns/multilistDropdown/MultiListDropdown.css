@@ -1,0 +1,79 @@
+
+.navbar-dropdown {
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .navbar-items {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #2C2C2C;
+    cursor: pointer;
+    &:hover{
+        color: #38539A;
+    }
+  }
+  
+.multilist-dropdown{
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #2C2C2C;
+    cursor: pointer;
+    &:hover{
+        color: #38539A;
+    }
+  }
+.multilist-option {
+    position: absolute;
+    top: 44px;
+    left: -20px;
+    background: white;
+    list-style: none;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px;
+    margin: 0;
+    padding: 24px 24px 24px 24px;
+    display: flex;
+    z-index: 1000;
+    width:1008px;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .multilist-category {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c2c2c;
+    display: flex ;
+    flex-direction: column;
+    width: 160px;
+  }
+  
+  ul .multilist-sublist {
+    display: flex;
+    flex-direction: column;
+    padding: 0px; 
+    margin: 0;
+    gap: 0px;
+    color: #2c2c2c;
+  }
+  
+  ul .multilist-sublist li a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400; 
+    line-height: 18px; 
+    margin: 20px 0 0 0 ;
+  }
+  
+  ul .multilist-sublist li a:hover {
+    color: #38539A;
+    font-weight: 600;
+  }

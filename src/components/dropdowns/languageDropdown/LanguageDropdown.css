@@ -1,0 +1,51 @@
+
+.language-dropdown {
+    position: relative;
+    cursor: pointer;
+    
+  }
+  
+  .language-options {
+    position: absolute;
+    top: 25px;
+    bottom: -199px;
+    right:-70.1px;
+    left: -50px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 24px 24px 24px 24px;
+    width: 194px; 
+    display:block;
+    z-index: 99900;
+    font-family: poppins;
+  }
+  
+  .language-options li {
+    color: #2C2C2C;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .language-options li:hover {
+    color: #38539A;
+    font-weight: 600;
+  }
+  
+  .language-options .tick-mark {
+    margin-left: 10px;
+    font-size: 18px;
+  }
+  
+  .language-options li:hover .tick-mark {
+    color:rgb(8, 95, 8);
+    font-weight: bold;
+  }
+  

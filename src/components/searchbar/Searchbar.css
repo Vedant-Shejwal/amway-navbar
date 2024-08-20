@@ -1,0 +1,26 @@
+
+.navbar-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 275px;
+    padding: 8px 32px 8px 10px;
+    /* Adjusted padding for the icon */
+    border-radius: 4px;
+    font-size: 14px;
+    color: black;
+    border: 1px solid #949494;
+    outline: none;
+  }
+  
+  
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+  }
+  

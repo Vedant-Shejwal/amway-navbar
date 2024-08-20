@@ -1,0 +1,39 @@
+
+.support-dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .support-options {
+    position: absolute;
+    top: 25px;
+    right: -70.1px;
+    left: -50px;
+    bottom: -110px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 24px 24px 24px 24px;
+    width: 194px;
+    display: block;
+    z-index: 9990;
+    font-family: Poppins;
+  }
+  
+  .support-options li {
+    color: #2C2C2C;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .support-options li:hover {
+    color: #38539A;
+    font-weight: 500;
+  }
