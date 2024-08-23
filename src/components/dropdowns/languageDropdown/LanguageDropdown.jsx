@@ -1,40 +1,24 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FaCheck } from 'react-icons/fa6';
+import useDropdown from '../../../utils/useDropdown';
 import './LanguageDropdown.css';
 
 const LanguageDropdown = () => {
     const { languageList } = useSelector(state => state.headerState.topBar.topBarRightData);
-    const dropdownRef = useRef(null);
 
-    // Get selected language from localStorage or default to the first language
+    const { isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen } = useDropdown(); 
     const storedLanguage = localStorage.getItem('selectedLanguage');
     const initialLanguage = storedLanguage || languageList[0].link.title;
     const [selectedLanguage, setSelectedLanguage] = useState(initialLanguage);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleLanguageChange = (language) => {
         setSelectedLanguage(language.title);
-        localStorage.setItem('selectedLanguage', language.title); // Store the selection
-        setIsDropdownOpen(false);
+        localStorage.setItem('selectedLanguage', language.title);
+        setIsDropdownOpen(false); // Close the dropdown after selection
         window.location.href = `/${language.href}`;
     };
-
-    const toggleDropdown = () => {
-        setIsDropdownOpen(prevState => !prevState);
-    };
-
-    const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setIsDropdownOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
 
     const sortedLanguages = [...languageList].sort((a, b) => {
         return a.link.title === selectedLanguage ? -1 : b.link.title === selectedLanguage ? 1 : 0;

@@ -10,11 +10,7 @@ function App() {
 
   return (
     <>
-    
-
     <Navbar/>
-    <div className='all'>
-    </div>
     </>
   )
 }

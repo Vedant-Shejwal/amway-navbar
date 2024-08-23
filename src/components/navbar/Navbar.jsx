@@ -8,8 +8,9 @@ import LanguageDropdown from "../dropdowns/languageDropdown/LanguageDropdown.jsx
 import SupportDropdown from '../dropdowns/supportDropdown/SupportDropdown.jsx';
 import MultiListDropdown from '../dropdowns/multilistDropdown/MultiListDropdown.jsx';
 import SingleListDropdown from '../dropdowns/singlelistDropdown/SingleListDropdown.jsx';
-// import './Navbar.css';
-// import '../dropdowns/multilistDropdown/MultiListDropdown.css'
+import Sidebar from '../sidebar/Sidebar.jsx';
+import { HiMagnifyingGlass } from "react-icons/hi2";
+import './Navbar.css';
 const Navbar = () => {
     const { topBar, amwayLogo, navBar } = useSelector(state => state.headerState);
 
@@ -29,7 +30,7 @@ const Navbar = () => {
                         <div className="topbar-desc"><u>Select delivery address</u></div>
                     </div>
                     <LanguageDropdown />
-                    <SupportDropdown/>
+                    <SupportDropdown />
                     <div className="topbar-item ">
                         <div className="topbar-icon"><IoPersonOutline /></div>
                         <div className="topbar-desc"> {topBar.topBarRightData.signIn}</div>
@@ -38,6 +39,10 @@ const Navbar = () => {
             </div>
             <div className="navbar">
                 <div className="navbar-left">
+
+
+                    <Sidebar />
+
                     <a href="/">
                         <img
                             src={amwayLogo.logoUrl}
@@ -49,24 +54,15 @@ const Navbar = () => {
                         <ul>
                             {navBar.navBarData.map(item => (
                                 <li key={item.title} className="navbar-items">
-                                        
-                                    {(item.tabType !== 'multiList' && item.tabType !== 'singleList' ) && (
+                                    {(item.tabType !== 'multiList' && item.tabType !== 'singleList') && (
                                         <a className='navbar-title' href={item.categoryData.href}>{item.title}</a>
-                                        )}
-                                        {item.tag && (
-                                            <span
-                                                className="navbar-tag"
-                                                style={{ backgroundColor: item.tagColor }}
-                                            >
-                                                {item.tag}
-                                            </span>
-                                        )}
-                                        {/* {(item.tabType === 'singleList') && (
-                                            <div className="navbar-dropdown"><IoChevronDownSharp /></div>
-                                        )} */}
-                                        
+                                    )}
+                                    {item.tag && (
+                                        <span className="navbar-tag" style={{ backgroundColor: item.tagColor }}>
+                                            {item.tag}
+                                        </span>
+                                    )}
                                     {item.tabType === 'multiList' && <MultiListDropdown item={item} />}
-                                    
                                     {item.tabType === 'singleList' && <SingleListDropdown item={item} />}
                                 </li>
                             ))}
@@ -75,8 +71,16 @@ const Navbar = () => {
                 </div>
                 <div className='navbar-right'>
                     <Searchbar />
-                    <div className="navbar-icon"><PiShoppingCart /></div>
+                    <div className='magnifyingglass navbar-icon'><HiMagnifyingGlass /></div>
+                    <div className='signin navbar-icon'><IoPersonOutline /></div>
+                    <div className="cart navbar-icon" >
+                        <a href="/cart"><PiShoppingCart /></a>
+                    </div>
                 </div>
+            </div>
+            <div className='pincode_section'>
+                <div className="topbar-icon"><FaLocationDot /></div>
+                <div className="topbar-desc"><u>Select delivery address</u></div>
             </div>
         </div>
     );

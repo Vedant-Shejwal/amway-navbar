@@ -4,7 +4,8 @@ const useDropdown = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    const toggleDropdown = () => {
+    const toggleDropdown = (e) => {
+        e.stopPropagation();
         setIsDropdownOpen(prevState => !prevState);
     };
 
@@ -21,8 +22,9 @@ const useDropdown = () => {
 
     return {
         isDropdownOpen,
+        toggleDropdown,
         dropdownRef,
-        toggleDropdown
+        setIsDropdownOpen
     };
 };
 

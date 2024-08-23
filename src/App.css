@@ -6,13 +6,15 @@
   margin: 0;
   padding: 0;
 }
-.all{
-  width:1422px;
-  height: 100vh;
+
+.all {
+  width: min(100%, 1440px);
+  height: 100%;
   background-color: rgb(235, 235, 235);
-  margin: 0 50px;
 }
-.header {
+
+
+/* .header {
   margin: 0 50px;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -142,7 +144,7 @@
   font-size: 24px;
   display: flex;
   align-items: center;
-}
+} */
 
 
 /* Styles for the language dropdown */

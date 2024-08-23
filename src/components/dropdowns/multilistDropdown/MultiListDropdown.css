@@ -74,6 +74,7 @@
   }
   
   ul .multilist-sublist li a:hover {
+    /* 38539A */
     color: #38539A;
-    font-weight: 600;
+    font-weight: 700 !important;
   }

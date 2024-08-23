@@ -1,32 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { IoChevronDownSharp } from "react-icons/io5";
-import './SupportDropdown.css'
+import useDropdown from '../../../utils/useDropdown';
+import './SupportDropdown.css';
 
 const SupportDropdown = () => {
-    const { supportList , supportTitle } = useSelector(state => state.headerState.topBar.topBarRightData);
-    const dropdownRef = useRef(null);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { supportList, supportTitle } = useSelector(state => state.headerState.topBar.topBarRightData);
+    const { isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen } = useDropdown();
 
     const handleSupportChange = (support) => {
         setIsDropdownOpen(false);
         window.location.href = support.href;
     };
-
-    const toggleDropdown = () => {
-        setIsDropdownOpen(prevState => !prevState);
-    };
-
-    const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setIsDropdownOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
 
     return (
         <div className="support-dropdown" ref={dropdownRef}>
