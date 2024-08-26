@@ -1,0 +1,39 @@
+.inner-menu{
+    background-color: #fff;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    opacity: 1;
+    overflow-y: auto;
+    position: fixed;
+    top: 49px;
+    transition: all 0.2s linear;
+    width: 390px;
+    z-index: 999999;
+}
+.innermenu-topbar{
+    align-items: center;
+    color: #38539a;
+    display: flex;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 22px;
+    margin-left: 26px;
+    padding-top: 30px;
+    gap:5px;
+}
+.innermenu-sublist{
+    margin-left: 57px;
+}
+
+.innermenu-sublist>li{
+    list-style: none;
+    margin-bottom: 18px;
+}
+.innermenu-sublist>li>a{
+    font-size: 15px;
+    text-decoration: none;
+    color: #2c2c2c;
+}
+

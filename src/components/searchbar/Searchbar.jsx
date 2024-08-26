@@ -6,7 +6,7 @@ import './Searchbar.css';
 
 const Searchbar = () => {
     const [searchText, setSearchText] = useState('');
-    const { isDropdownOpen: isFocused, toggleDropdown, dropdownRef, setIsDropdownOpen } = useDropdown();
+    const [ isFocused, toggleDropdown, dropdownRef, setIsDropdownOpen ] = useDropdown();
 
     const handleInputChange = (e) => {
         setSearchText(e.target.value);

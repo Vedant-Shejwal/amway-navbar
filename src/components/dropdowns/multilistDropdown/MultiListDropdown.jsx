@@ -4,9 +4,9 @@ import "./MultiListDropdown.css";
 import useDropdown from '../../../utils/useDropdown';
 
 const MultiListDropdown = ({ item }) => {
-    const { categoryData } = item;
 
-    const { isDropdownOpen, toggleDropdown, dropdownRef } = useDropdown();
+    const { categoryData } = item;
+    const [ isDropdownOpen, toggleDropdown, dropdownRef ] = useDropdown();
 
     return (
         <div className="multilist-dropdown" onClick={toggleDropdown} ref={dropdownRef}>
@@ -39,7 +39,6 @@ const MultiListDropdown = ({ item }) => {
                                             <a href={subItem.link.href} style={{
                                                 textDecoration: isLastItem ? 'underline' : 'none',
                                                 fontWeight: isLastItem ? 600 : 400, 
-
                                             }}>
                                                 {subItem.link.title}
                                             </a>
@@ -49,8 +48,6 @@ const MultiListDropdown = ({ item }) => {
                             </ul>
                         </div>
                     ))}
-
-
                 </div>
             )
             }

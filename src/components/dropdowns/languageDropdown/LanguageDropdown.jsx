@@ -8,7 +8,7 @@ import './LanguageDropdown.css';
 const LanguageDropdown = () => {
     const { languageList } = useSelector(state => state.headerState.topBar.topBarRightData);
 
-    const { isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen } = useDropdown(); 
+    const [ isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen ] = useDropdown(); 
     const storedLanguage = localStorage.getItem('selectedLanguage');
     const initialLanguage = storedLanguage || languageList[0].link.title;
     const [selectedLanguage, setSelectedLanguage] = useState(initialLanguage);

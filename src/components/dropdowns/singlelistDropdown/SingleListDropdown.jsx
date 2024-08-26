@@ -7,7 +7,7 @@ const SingleListDropdown = ({ item }) => {
     const { categoryData, title } = item;
 
     // Use the custom hook
-    const { isDropdownOpen, toggleDropdown, dropdownRef } = useDropdown();
+    const [ isDropdownOpen, toggleDropdown, dropdownRef ] = useDropdown();
 
     return (
         <div className="singlelist-dropdown" onClick={toggleDropdown} ref={dropdownRef}>

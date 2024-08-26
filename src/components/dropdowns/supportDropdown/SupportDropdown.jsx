@@ -6,7 +6,7 @@ import './SupportDropdown.css';
 
 const SupportDropdown = () => {
     const { supportList, supportTitle } = useSelector(state => state.headerState.topBar.topBarRightData);
-    const { isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen } = useDropdown();
+    const [ isDropdownOpen, toggleDropdown, dropdownRef, setIsDropdownOpen ] = useDropdown();
 
     const handleSupportChange = (support) => {
         setIsDropdownOpen(false);
