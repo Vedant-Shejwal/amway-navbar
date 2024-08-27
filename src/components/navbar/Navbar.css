@@ -3,6 +3,10 @@
     margin-inline: auto;
     font-family: 'Roboto Condensed', sans-serif;
     display: block;
+    position: fixed;
+    right: 0;
+    left: 0;
+    background-color: white;
 }
 
 .topbar-container {
