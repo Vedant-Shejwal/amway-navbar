@@ -6,7 +6,7 @@
 
 .footer-link{
     list-style-type: none;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .footer-link>a{
@@ -17,4 +17,16 @@
 }
 
 
+
+@media screen and (max-width:900px) {
+    .navsection{
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .navsection{
+        margin-right: 0;
+    }
+}
 

@@ -13,7 +13,8 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import './Navbar.css';
 const Navbar = () => {
     const { topBar, amwayLogo, navBar } = useSelector(state => state.headerState);
-
+    const { cartItems } = useSelector((state) => state.cartState);
+    console.log(cartItems)
     return (
         <div className='header'>
             <div className="topbar-container">
@@ -74,12 +75,14 @@ const Navbar = () => {
                     <div className='magnifyingglass navbar-icon'><HiMagnifyingGlass /></div>
                     <div className='signin navbar-icon'><IoPersonOutline /></div>
                     <div className="cart navbar-icon" >
-                        <a href="/cart"><PiShoppingCart /></a>
+                        <a href="/cart"><PiShoppingCart />
+                        {cartItems.length > 0 && <div className="cart-count">{cartItems.length}</div>}</a>
                     </div>
                 </div>
             </div>
             <div className='pincode_section'>
-                <div className="topbar-icon"><FaLocationDot /></div>
+                <div className="topbar-icon">
+                    <FaLocationDot />        </div>
                 <div className="topbar-desc"><u>Select delivery address</u></div>
             </div>
         </div>

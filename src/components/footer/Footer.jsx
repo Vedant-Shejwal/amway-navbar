@@ -11,11 +11,14 @@ const Footer = () => {
     <>
       <div className='footer'>
         <div className="footer-left">
+          <div className="footer-list">
+
           {navSection.map((item) => (
             <div className="footer-navsection">
               <NavSection item={item} />
             </div>
           ))}
+          </div>
           <div className="footer-connect">
             <div className="footer-title">
               connect with us

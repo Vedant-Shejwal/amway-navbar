@@ -20,6 +20,7 @@ const App = () => {
   return (
     <>
     <Navbar/>
+    <div className='empty-box'></div>
     <div>{routes}</div>
     <Footer/>
     </>

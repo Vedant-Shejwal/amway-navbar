@@ -136,10 +136,26 @@
     display: flex;
     align-items: center;
 }
-.cart>a{
+
+.cart {
+    position: relative;
+}
+
+.cart>a {
     display: flex;
     text-decoration: none;
     color: #2C2C2C;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background-color: #38539A;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 14px;
 }
 
 /* media screen < 1200px */
@@ -152,7 +168,8 @@
 .signin {
     display: none;
 }
-.pincode_section{
+
+.pincode_section {
     display: none;
 }
 
@@ -171,20 +188,24 @@
         padding: 0 16px;
         position: relative;
     }
-    .navbar-left{
+
+    .navbar-left {
         margin: 0;
     }
-    
-    .navbar-right{
+
+    .navbar-right {
         margin: 0;
     }
-    .navbar-icon{
+
+    .navbar-icon {
         padding-left: 7px;
     }
-    .navbar-logo{
+
+    .navbar-logo {
         height: auto;
         width: 83px;
     }
+
     .navbar-area {
         display: none;
     }
@@ -200,7 +221,8 @@
     .signin {
         display: flex;
     }
-    .pincode_section{
+
+    .pincode_section {
         align-items: center;
         border-bottom: 1px solid #e4e4e4;
         cursor: pointer;
@@ -209,11 +231,13 @@
         padding: 0 16px;
         max-width: 1440px;
     }
-    .topbar-icon{
+
+    .topbar-icon {
         color: #2C2C2C;
         margin-right: 10px;
     }
-    .topbar-desc{
+
+    .topbar-desc {
         color: #2C2C2C;
         font-size: 14px;
         font-weight: 500;
