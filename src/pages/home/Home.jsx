@@ -5,10 +5,11 @@ import Banner from './../../components/banner/Banner.jsx';
 import bannerImg from '../../assets/banner_1.jpg';
 import axiosInstance from "../../utils/axiosInstance.js";
 import ProductCard from '../../components/cards/productcard/ProductCard.jsx';
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [allProduct, setAllProduct] = useState([]);
-
+  
   const getAllProduct = async () => {
     try {
       const response = await axiosInstance.get("/products?limit=5");
@@ -37,7 +38,7 @@ const Home = () => {
               altText={product.title}
               category={product.category}
               title={product.title}
-              price={product.price * 83}
+              price={product.price}
             />
           ))
         ) : (

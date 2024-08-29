@@ -1,6 +1,6 @@
 .product-card {
     background-color: white;
-    height: 640px;
+    height: 600px;
     width: 320px;
     flex: 0 0 auto;
     border-radius: 5px;
@@ -15,6 +15,7 @@
     padding: 20px;
     display: flex;
     align-items: flex-end;
+    cursor: pointer;
 }
 
 .product-img > img {
@@ -48,6 +49,7 @@
     line-height: 20px;
     margin-bottom: 4px;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .product-price {
@@ -63,6 +65,5 @@
     justify-content: end;
 }
 .add-to-cart-btn{
-    align-self: center;
     margin: 5px 0;
 }

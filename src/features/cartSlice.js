@@ -5,11 +5,11 @@ const loadState = () => {
     try {
         const serializedState = localStorage.getItem('cartItems');
         if (serializedState === null) {
-            return []; // Return default state if nothing is in localStorage
+            return []; 
         }
         return JSON.parse(serializedState);
     } catch (err) {
-        return []; // Return default state if error occurs
+        return []; 
     }
 };
 
@@ -19,7 +19,7 @@ const saveState = (state) => {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('cartItems', serializedState);
     } catch (err) {
-        // Ignore write errors
+       
     }
 };
 
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
     reducers: {
         addCart: (state, action) => {
             state.cartItems.push(action.payload);
-            saveState(state.cartItems); // Save updated state to localStorage
+            saveState(state.cartItems);
         },
     },
 });

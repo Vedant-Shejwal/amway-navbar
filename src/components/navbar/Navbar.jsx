@@ -14,7 +14,6 @@ import './Navbar.css';
 const Navbar = () => {
     const { topBar, amwayLogo, navBar } = useSelector(state => state.headerState);
     const { cartItems } = useSelector((state) => state.cartState);
-    console.log(cartItems)
     return (
         <div className='header'>
             <div className="topbar-container">
