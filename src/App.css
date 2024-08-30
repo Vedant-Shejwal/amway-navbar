@@ -12,6 +12,13 @@
   height: 100px;
   margin-inline:auto;
 }
+.pages{
+  width: min(100%, 1439px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
 
 /* .header {
   margin: 0 50px;

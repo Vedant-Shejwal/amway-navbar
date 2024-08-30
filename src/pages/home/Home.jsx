@@ -1,11 +1,9 @@
 import { React, useState, useEffect } from 'react';
 import './Home.css';
-import Footer from '../../components/footer/Footer';
 import Banner from './../../components/banner/Banner.jsx';
 import bannerImg from '../../assets/banner_1.jpg';
 import axiosInstance from "../../utils/axiosInstance.js";
 import ProductCard from '../../components/cards/productcard/ProductCard.jsx';
-import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [allProduct, setAllProduct] = useState([]);

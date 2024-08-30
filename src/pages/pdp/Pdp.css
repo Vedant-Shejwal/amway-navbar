@@ -1,9 +1,5 @@
 .pdp {
-    width: min(100%, 1439px);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 70px 50px 60px;
+    padding: 20px 0 10px;
 }
 
 .pdp-section {

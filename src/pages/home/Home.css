@@ -1,11 +1,4 @@
-.home{
-    width: min(100%, 1439px);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
-}
-/* Home.css */
+
 
 .product-list {
     display: flex;

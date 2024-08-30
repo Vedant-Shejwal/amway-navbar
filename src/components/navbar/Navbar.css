@@ -137,11 +137,11 @@
     align-items: center;
 }
 
-.cart {
+.cart-icon {
     position: relative;
 }
 
-.cart>a {
+.cart-icon>a {
     display: flex;
     text-decoration: none;
     color: #2C2C2C;

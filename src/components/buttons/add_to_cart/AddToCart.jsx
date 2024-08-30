@@ -7,10 +7,11 @@ import { useState } from 'react';
 
 const AddToCart = ({ product }) => {
     const dispatch = useDispatch();
+    
     const [showToastMsg, setshowToastMsg] = useState({
         isShown: false,
         message: "",
-        type: "add"
+        type: ""
     })
 
     const handleshowToast = (message, type) => {
@@ -33,9 +34,12 @@ const AddToCart = ({ product }) => {
     };
 
     return (
-        <div className='atc-btn' onClick={handleAddToCart}>
-            <div className="text">
-                ADD TO CART
+        <>
+            <div className='atc-btn' onClick={handleAddToCart}>
+                <div className="atc-text">
+                    ADD TO CART
+                </div>
+
             </div>
 
             <Toast
@@ -44,7 +48,7 @@ const AddToCart = ({ product }) => {
                 type={showToastMsg.type}
                 onClose={handlecloseToast}
             />
-        </div>
+        </>
     )
 }
 

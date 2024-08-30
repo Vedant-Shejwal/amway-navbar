@@ -1,0 +1,38 @@
+.cart-card{
+    width: 100%;
+}
+.product-cart-top{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+
+}
+.cart-top-left{
+    display: flex;
+    flex: 1;
+}
+
+.cart-top-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-cart-img{
+    width: 120px;
+    height: 100px;
+}
+.product-cart-img>img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.product-cart-details{
+    display: flex;
+}
+.product-cart-text>b{
+    text-transform: uppercase;
+}
+.product-cart-price{
+    height: 100px;
+}

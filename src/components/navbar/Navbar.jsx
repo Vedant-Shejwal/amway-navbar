@@ -1,16 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { IoPersonOutline, IoChevronDownSharp } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import Searchbar from '../searchbar/Searchbar';
 import { PiShoppingCart } from "react-icons/pi";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+import { IoPersonOutline, IoChevronDownSharp } from "react-icons/io5";
+import Searchbar from '../searchbar/Searchbar';
 import LanguageDropdown from "../dropdowns/languageDropdown/LanguageDropdown.jsx";
 import SupportDropdown from '../dropdowns/supportDropdown/SupportDropdown.jsx';
 import MultiListDropdown from '../dropdowns/multilistDropdown/MultiListDropdown.jsx';
 import SingleListDropdown from '../dropdowns/singlelistDropdown/SingleListDropdown.jsx';
 import Sidebar from '../sidebar/Sidebar.jsx';
-import { HiMagnifyingGlass } from "react-icons/hi2";
 import './Navbar.css';
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
     const { topBar, amwayLogo, navBar } = useSelector(state => state.headerState);
     const { cartItems } = useSelector((state) => state.cartState);
@@ -73,10 +75,12 @@ const Navbar = () => {
                     <Searchbar />
                     <div className='magnifyingglass navbar-icon'><HiMagnifyingGlass /></div>
                     <div className='signin navbar-icon'><IoPersonOutline /></div>
-                    <div className="cart navbar-icon" >
-                        <a href="/cart"><PiShoppingCart />
-                        {cartItems.length > 0 && <div className="cart-count">{cartItems.length}</div>}</a>
-                    </div>
+                    <Link to='/cart' className="cart-icon navbar-icon" >
+                        <a>
+                            <PiShoppingCart />
+                            {cartItems.length > 0 && <div className="cart-count">{cartItems.length}</div>}
+                        </a>
+                    </Link>
                 </div>
             </div>
             <div className='pincode_section'>
