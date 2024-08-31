@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const { topBar, amwayLogo, navBar } = useSelector(state => state.headerState);
-    const { cartItems } = useSelector((state) => state.cartState);
+    const { cartItems, totalQuantity} = useSelector((state) => state.cartState);
     return (
         <div className='header'>
             <div className="topbar-container">
@@ -78,7 +78,7 @@ const Navbar = () => {
                     <Link to='/cart' className="cart-icon navbar-icon" >
                         <a>
                             <PiShoppingCart />
-                            {cartItems.length > 0 && <div className="cart-count">{cartItems.length}</div>}
+                            {cartItems.length > 0 && <div className="cart-count">{totalQuantity}</div>}
                         </a>
                     </Link>
                 </div>

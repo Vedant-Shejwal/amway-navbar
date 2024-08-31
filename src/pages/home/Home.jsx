@@ -10,7 +10,7 @@ const Home = () => {
   
   const getAllProduct = async () => {
     try {
-      const response = await axiosInstance.get("/products?limit=5");
+      const response = await axiosInstance.get("/products");
       if (response.data) {
         setAllProduct(response.data);
       }
@@ -26,14 +26,13 @@ const Home = () => {
   return (
     <div className='home'>
       <Banner imgUrl={bannerImg} altText={"banner"} />
-      <h1 style={{ marginInline: 'auto', fontSize: '40px', marginTop: '40px', marginBottom: '17px' }}>Top selling</h1>
+      <div style={{ marginInline: 'auto', fontSize: '40px', marginTop: '40px', marginBottom: '17px', textAlign:'center' }}>Top selling</div>
       <div className="product-list">
         {allProduct.length > 0 ? (
           allProduct.map((product) => (
             <ProductCard
               id={product.id}
-              imgUrl={product.image}
-              altText={product.title}
+              image={product.image}
               category={product.category}
               title={product.title}
               price={product.price}

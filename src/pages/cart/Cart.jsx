@@ -6,7 +6,8 @@ import GeneralBtn from '../../components/buttons/general_btn/GeneralBtn';
 import { useEffect } from 'react';
 import CartCard from './../../components/cards/cart_card/CartCard';
 const Cart = () => {
-    const { cartItems } = useSelector((state) => state.cartState);
+    const { cartItems, totalCost,totalQuantity} = useSelector((state) => state.cartState);
+    const showPrice = Number((totalCost).toFixed(2));
 
 
     useEffect(() => {
@@ -35,12 +36,20 @@ const Cart = () => {
                     <div className='cart-items'>
                         <div className="cart-items-details">
                             <h2>Your Cart</h2>
-                            <p>Total Items: {cartItems.length}</p>
+                            <p>Total Items: {totalQuantity}</p>
                         </div>
                         <div className="cart-product-list">
-                            {cartItems.map((item)=>(
-                                
-                            <CartCard item={item}/>
+                            {cartItems.map((item) => (
+                                <CartCard
+                                    id={item.id}
+                                    image={item.image}
+                                    quantity={item.quantity}
+                                    category={item.category}
+                                    title={item.title}
+                                    totalPrice={item.totalPrice}
+                                    price={item.price}
+
+                                />
                             ))}
                         </div>
                     </div>
@@ -48,12 +57,15 @@ const Cart = () => {
                         <div className="checkout-price">
                             <div className="checkout-price-left">
                                 <h2>You Pay</h2>
-                               <u> <a>View Our Order Policy</a></u>
+                                <u> <a>View Our Order Policy</a></u>
                             </div>
                             <div className="checkout-price-right">
-                                <h2> $ {cartItems.length}</h2>
+                                <h2>$ {showPrice}</h2>
                                 <p>(incl. of all taxes)</p>
                             </div>
+                        </div>
+                        <div className="checkout-btn">
+                            <GeneralBtn type={'black'} gen_btn_text={'CHECKOUT'} redirect={'/checkout'}/>
                         </div>
                     </div>
                 </>
