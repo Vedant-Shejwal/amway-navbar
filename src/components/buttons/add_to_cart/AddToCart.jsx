@@ -1,9 +1,10 @@
 import React from 'react'
 import './AddToCart.css'
 import { useDispatch } from 'react-redux';
-import { addCart } from '../../../features/cartSlice'
+// import { addCart } from '../../../features/cartSlice'
 import Toast from "../../../components/toastMessage/Toast"
 import { useState } from 'react';
+import { addCart } from '../../../redux/cart/cartActions';
 
 const AddToCart = ({ product }) => {
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const AddToCart = ({ product }) => {
     }
     const handleAddToCart = () => {
         dispatch(addCart(product));
+        // addCart(product)
         handleshowToast("Product Added Successfully", "success")
     };
 

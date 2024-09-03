@@ -12,9 +12,8 @@ const Footer = () => {
       <div className='footer'>
         <div className="footer-left">
           <div className="footer-list">
-
-          {navSection.map((item) => (
-            <div className="footer-navsection">
+          {navSection.map((item,index) => (
+            <div  key={index} className="footer-navsection">
               <NavSection item={item} />
             </div>
           ))}
@@ -24,8 +23,8 @@ const Footer = () => {
               connect with us
             </div>
             <div className="footer-socialTile">
-              {tiles.socialTile.map((item) => (
-                <div className="footer-logo">
+              {tiles.socialTile.map((item,index) => (
+                <div key={index} className="footer-logo">
                   <a href={item.link.href}>
                     <img
                       src={item.logoUrl}

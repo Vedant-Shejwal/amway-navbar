@@ -8,8 +8,8 @@ const NavSection = ({ item }) => {
                 {item.header}
             </div>
             <ul>
-                {item.list.map((sublist) => (
-                    <li className='footer-link'>
+                {item.list.map((sublist, index) => (
+                    <li className='footer-link' key={index} >
                         <a href={sublist.link.href}>
                             {sublist.link.title}
                         </a>

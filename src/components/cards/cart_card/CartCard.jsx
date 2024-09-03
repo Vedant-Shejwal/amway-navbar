@@ -3,8 +3,10 @@ import './CartCard.css'
 import { RxCross2 } from "react-icons/rx";
 import ChangeQuantity from './../../buttons/change_quantity/ChangeQuantity';
 import { useDispatch } from 'react-redux';
-import { removeItem} from '../../../features/cartSlice'
+//import { removeItem} from '../../../features/cartSlice'
+import { removeItem} from '../../../redux/cart/cartActions';
 import Toast from "../../../components/toastMessage/Toast"
+import { Link } from "react-router-dom";
 
 
 const CartCard = ({ id, image, quantity, category, title, price,totalPrice }) => {
@@ -48,15 +50,15 @@ const CartCard = ({ id, image, quantity, category, title, price,totalPrice }) =>
         <div className='cart-card'>
             <div className="product-cart-top">
                 <div className="cart-top-left">
-                    <div className="product-cart-img">
+                    <Link to ={"/products/"+id} className="product-cart-img">
                         <img src={image} alt={title} />
-                    </div>
+                    </Link>
                     <div className="product-cart-details">
                         <div className='product-cart-quantity'>
                             {quantity}
                             <RxCross2 size={10} />
                         </div>
-                        <div className="product-cart-text"><p>{category}</p> {showTitle}</div>
+                        <Link to ={"/products/"+id} className="product-cart-text"><p>{category}</p> {showTitle}</Link>
                     </div>
                 </div>
 
@@ -67,7 +69,7 @@ const CartCard = ({ id, image, quantity, category, title, price,totalPrice }) =>
                         </div>
                     </div>
                     <div className="product-cart-price">
-                        MRP
+                        MRP <strike style={{color:'grey'}}>$ {Number((totalPrice*1.08).toFixed(2))}</strike>
                         <div className="product-cart-cost">
                             $ {showPrice}
                         </div>

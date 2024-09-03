@@ -27,7 +27,7 @@ const ProductCard = ({id, image, category, title, price }) => {
                     </Link>
                 </div>
                 <div className="product-details-bottom">
-                    <div style={{fontSize:'16px'}}>MRP</div>
+                    <div style={{fontSize:'16px'}}>MRP <strike style={{color:'grey'}}>$ {Number((price*1.08).toFixed(2))}</strike></div>
                     <div className="product-price">$ {price}</div>
                     <div style={{fontSize:'14px',color:'#949494'}}>(incl. of all taxes)</div>
                     <div className="add-to-cart-btn">
