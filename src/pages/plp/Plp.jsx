@@ -5,6 +5,7 @@ import ProductCard from '../../components/cards/productcard/ProductCard';
 import { useParams } from 'react-router-dom';
 import Loading from '../../components/modal/loading/Loading.jsx';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import ScrollUp from './../../components/buttons/scroll_up/ScrollUp.jsx';
 
 const Plp = () => {
     const { id } = useParams();
@@ -54,6 +55,9 @@ const Plp = () => {
     return (
         <div className="plp">
             {loading && <Loading />}
+            <div className="category-name" style={{ fontWeight: 700, fontSize: '40px', marginBottom: '10px', textAlign: 'center', marginTop: '-25px', textTransform:'uppercase'}}>
+                    {id}
+                </div>
             <div className="category-product-list">
                 {allProduct.length > 0 ? (
                     allProduct.map((product, index) => (
@@ -71,9 +75,10 @@ const Plp = () => {
                 )}
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', paddingTop:'40px'}}>
-               {!loading &&  <AiOutlineLoading3Quarters className="loading-icon" />}
+            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', paddingTop: '40px' }}>
+                {!loading && <AiOutlineLoading3Quarters className="loading-icon" />}
             </div>
+            <ScrollUp />
         </div>
     );
 }

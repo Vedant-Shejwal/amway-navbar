@@ -7,6 +7,7 @@ import Home from './pages/home/Home';
 import Pdp from './pages/pdp/Pdp';
 import Plp from './pages/plp/Plp';
 import Cart from './pages/cart/Cart';
+import Search from './pages/search/Search';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Footer from './components/footer/Footer';
 
@@ -17,6 +18,7 @@ const routes = (
       <Route path='/products/:id' exact element={<Pdp/>}/>
       <Route path='/cart' exact element={<Cart/>}/>
       <Route path='/products/category/:id' exact element={<Plp/>}/>
+      <Route path='/search' exact element={<Search/>}/>
     </Routes>
 );
 

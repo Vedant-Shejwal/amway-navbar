@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import useDropdown from '../../utils/useDropdown';// Import your custom hook
+import { useNavigate } from 'react-router-dom';
+import useDropdown from '../../utils/useDropdown'; // Import your custom hook
 import './Searchbar.css';
 
 const Searchbar = () => {
     const [searchText, setSearchText] = useState('');
-    const [ isFocused, toggleDropdown, dropdownRef, setIsDropdownOpen ] = useDropdown();
+    const [isFocused, toggleDropdown, dropdownRef, setIsDropdownOpen] = useDropdown();
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         setSearchText(e.target.value);
@@ -14,7 +16,14 @@ const Searchbar = () => {
 
     const handleClearSearch = () => {
         setSearchText('');
-        setIsDropdownOpen(false); 
+        setIsDropdownOpen(false);
+    };
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            navigate(`/search?query=${searchText}`)
+            setIsDropdownOpen(false); 
+        }
     };
 
     return (
@@ -25,6 +34,7 @@ const Searchbar = () => {
                 className="search-input"
                 value={searchText}
                 onChange={handleInputChange}
+                onKeyDown={handleSearch}
                 onFocus={toggleDropdown}
             />
             {isFocused || searchText ? (
