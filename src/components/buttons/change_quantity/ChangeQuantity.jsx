@@ -8,7 +8,7 @@ import Toast from "../../../components/toastMessage/Toast"
 // import { addCart ,reduceQuantity} from '../../../features/cartSlice'
 import { addCart, reduceQuantity } from '../../../redux/cart/cartActions';
 
-const ChangeQuantity = ({ product }) => {
+const ChangeQuantity = ({ product, setLoading }) => {
 
     const dispatch = useDispatch();
 
@@ -33,18 +33,26 @@ const ChangeQuantity = ({ product }) => {
         })
     }
     const handleReduceQuantity = () => {
-        dispatch(reduceQuantity(product.id));
-        handleshowToast("Product Removed Successfully", "success")
+        setLoading(true)
+        setTimeout(() => {
+            dispatch(reduceQuantity(product.id));
+            setLoading(false)
+            handleshowToast("Product Removed Successfully", "success")
+        }, 1000);
     };
-    
+
     const handleAddToCart = () => {
-        dispatch(addCart(product));
-        handleshowToast("Product Added Successfully", "success")
+        setLoading(true)
+        setTimeout(() => {
+            dispatch(addCart(product));
+            setLoading(false)
+            handleshowToast("Product Added Successfully", "success")
+        }, 1000);
     };
 
     return (
         <div className='cq-btn'>
-            <div className="cq-btn-decrease"><CiCircleMinus onClick={handleReduceQuantity}/></div>
+            <div className="cq-btn-decrease"><CiCircleMinus onClick={handleReduceQuantity} /></div>
             <div className="cq-btn-amount">{product.quantity}</div>
             <div className="cq-btn-increase" onClick={handleAddToCart}><CiCirclePlus /></div>
 

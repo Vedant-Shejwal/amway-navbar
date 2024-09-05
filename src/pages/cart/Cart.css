@@ -120,4 +120,16 @@
     .cart {
         display: block;
     }
+    .checkout-summary{
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .cart {
+        margin: -40px
+    }
+    .cart-product-list{
+        padding: 0px;
+    }
 }

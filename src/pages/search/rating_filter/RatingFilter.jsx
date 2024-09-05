@@ -1,13 +1,15 @@
-import React from 'react';
 import { IoChevronDownSharp } from "react-icons/io5";
+import { useState } from 'react';
 
-const RatingFilter = ({ isOpen, toggleOpen, selectedRating, handleRadioChange }) => (
-  <div className="accordion-section">
-    <div onClick={toggleOpen} className="accordion-header">
-      Rating  <div className={`accordian-icon ${isOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-    </div>
-    {isOpen && (
-      <div className="accordion-content">
+const RatingFilter = ({ selectedRating, handleRadioChange }) => {
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
+
+  return (
+    <div className="accordion-section">
+      <div onClick={() => setIsRatingOpen(!isRatingOpen)} className="accordion-header">
+        Rating <div className={`accordian-icon ${isRatingOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
+      </div>
+      <div className={`accordion-content ${isRatingOpen ? 'open' : ''}`}>
         <label>
           <input
             type="radio"
@@ -59,8 +61,8 @@ const RatingFilter = ({ isOpen, toggleOpen, selectedRating, handleRadioChange })
           1 star & up
         </label>
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 export default RatingFilter;

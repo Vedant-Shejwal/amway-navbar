@@ -1,13 +1,15 @@
-import React from 'react';
 import { IoChevronDownSharp } from "react-icons/io5";
+import { useState } from 'react';
 
-const CategoryFilter = ({ isOpen, toggleOpen, selectedCategory, handleRadioChange }) => (
-  <div className="accordion-section">
-    <div onClick={toggleOpen} className="accordion-header">
-      Category <div className={`accordian-icon ${isOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-    </div>
-    {isOpen && (
-      <div className="accordion-content">
+const CategoryFilter = ({ selectedCategory, handleRadioChange }) => {
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+
+  return (
+    <div className="accordion-section">
+      <div onClick={() => setIsCategoryOpen(!isCategoryOpen)} className="accordion-header">
+        Category <div className={`accordian-icon ${isCategoryOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
+      </div>
+      <div className={`accordion-content ${isCategoryOpen ? 'open' : ''}`}>
         <label>
           <input
             type="radio"
@@ -59,8 +61,8 @@ const CategoryFilter = ({ isOpen, toggleOpen, selectedCategory, handleRadioChang
           Electronics
         </label>
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 export default CategoryFilter;

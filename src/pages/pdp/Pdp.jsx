@@ -58,7 +58,7 @@ const Pdp = () => {
                                 {product.description}
                             </div>
                             <div className="pdp-add-to-cart-btn">
-                                <AddToCart product={product} />
+                                <AddToCart product={product} setLoading={setLoading}/>
                             </div>
                         </div>
                     </div>

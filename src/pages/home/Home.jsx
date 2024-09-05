@@ -11,7 +11,7 @@ const ProductCard = React.lazy(() => delayForDemo(import('../../components/cards
 
 function delayForDemo(promise) {
   return new Promise(resolve => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, 1000);
   }).then(() => promise);
 }
 
@@ -23,7 +23,7 @@ const Home = () => {
 
   const getAllProduct = async () => {
     try {
-      const response = await axiosInstance.get("/products");
+      const response = await axiosInstance.get("/products?limit=5");
       if (response.data) {
         setAllProduct(response.data);
       }
@@ -97,6 +97,7 @@ const Home = () => {
                 category={product.category}
                 title={product.title}
                 price={product.price}
+                rating={product.rating.rate}
               />
             ))
           ) : (

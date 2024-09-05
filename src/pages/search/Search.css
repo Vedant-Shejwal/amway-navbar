@@ -1,21 +1,25 @@
 .search-page {
     display: flex;
 }
-.search-page-left{
+
+.search-page-left {
     flex: 1;
 }
+
 .filters {
     border-radius: 10px;
     padding: 20px;
     margin-top: 40px;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
-.search-text{
+
+.search-text {
     font-size: 20px;
     font-weight: 700;
 }
-.clear-all-button{
-    cursor:pointer;
+
+.clear-all-button {
+    cursor: pointer;
     font-size: 20px;
     font-weight: 500;
 }
@@ -24,6 +28,7 @@
     margin-bottom: 24px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .accordion-section:last-child {
     border-bottom: none;
     margin-bottom: 0px;
@@ -39,17 +44,29 @@
     font-weight: 600;
 }
 
-.accordian-icon{
+.accordian-icon {
     font-size: 24px;
     display: flex;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
 .accordian-icon.rotate {
     transform: scaleY(-1)
-  }
+}
+
 .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 10px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.open {
+    max-height: 500px;
+    opacity: 1;
     padding: 10px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
 .accordion-content label {
@@ -68,4 +85,23 @@
     grid-row-gap: 40px;
     grid-column-gap: 2px;
     padding: 20px;
+}
+
+@media (max-width: 1350px) {
+    .search-list {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+@media (max-width: 1000px) {
+    .search-page {
+        display: block;
+    }
+}
+
+@media (max-width: 800px) {
+    .search-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

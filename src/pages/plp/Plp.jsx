@@ -68,6 +68,7 @@ const Plp = () => {
                             category={product.category}
                             title={product.title}
                             price={product.price}
+                            rating={product.rating.rate}
                         />
                     ))
                 ) : (

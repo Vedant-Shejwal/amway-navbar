@@ -1,18 +1,20 @@
-import React from 'react';
 import { IoChevronDownSharp } from "react-icons/io5";
+import { useState } from 'react';
 
-const PriceFilter = ({ isOpen, toggleOpen, priceRange, handleRadioChange }) => (
-  <div className="accordion-section">
-    <div onClick={toggleOpen} className="accordion-header">
-      Price Range <div className={`accordian-icon ${isOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-    </div>
-    {isOpen && (
-      <div className="accordion-content">
+const PriceFilter = ({ priceRange, handleRadioChange }) => {
+  const [isPriceOpen, setIsPriceOpen] = useState(true);
+
+  return (
+    <div className="accordion-section">
+      <div onClick={() => setIsPriceOpen(!isPriceOpen)} className="accordion-header">
+        Price Range <div className={`accordian-icon ${isPriceOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
+      </div>
+      <div className={`accordion-content ${isPriceOpen ? 'open' : ''}`}>
         <label>
           <input
             type="radio"
             name="priceRange"
-            value="0-100"
+            value="0-100000"
             checked={priceRange[0] === 0 && priceRange[1] === 100000}
             onChange={() => handleRadioChange('price', [0, 100000])}
           />
@@ -49,8 +51,8 @@ const PriceFilter = ({ isOpen, toggleOpen, priceRange, handleRadioChange }) => (
           $500 - $1000
         </label>
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 export default PriceFilter;

@@ -3,7 +3,13 @@ import { useLocation } from 'react-router-dom';
 import axiosInstance from "../../utils/axiosInstance.js";
 import ProductCard from '../../components/cards/productcard/ProductCard.jsx';
 import { IoChevronDownSharp } from "react-icons/io5";
+import PriceFilter from './price_filter/PriceFilter.jsx';
+
 import './Search.css'
+import CategoryFilter from './category_filter/CategoryFilter.jsx';
+import RatingFilter from './rating_filter/RatingFilter.jsx';
+import SortFilter from './sort_filter/SortFilter.jsx';
+import Loading from './../../components/modal/loading/Loading';
 
 const Search = () => {
   const location = useLocation();
@@ -16,11 +22,7 @@ const Search = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedRating, setSelectedRating] = useState(0);
   const [sortOption, setSortOption] = useState('');
-
-  const [isPriceOpen, setIsPriceOpen] = useState(true);
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [isRatingOpen, setIsRatingOpen] = useState(false);
-  const [isSortOpen, setIsSortOpen] = useState(false);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,9 +30,11 @@ const Search = () => {
         const response = await axiosInstance.get("/products");
         if (response.data) {
           setAllProducts(response.data);
+          setLoading(false)
         }
       } catch (error) {
         console.log("Error fetching products: ", error);
+        setLoading(false)
       }
     };
 
@@ -88,240 +92,22 @@ const Search = () => {
   };
 
   return (
+
     <div style={{ marginTop: '-20px' }}>
-      {query && (
-        <p style={{  margin:'10px 0 10px 0'}}><i>Search Results for "{query}"</i></p>
-      )}
+      {loading && <Loading />}
+      {query && (<p style={{ margin: '10px 0 10px 0' }}><i>Search Results for "{query}"</i></p>)}
       <div className='search-page'>
         <div className="search-page-left">
           <div className="filters">
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', padding: '5px 0' }}>
               <div className="search-text">FILTER</div>
               <div onClick={handleClearAll} className="clear-all-button"><u>Reset</u></div>
             </div>
-            <div className="accordion-section">
-              <div onClick={() => setIsPriceOpen(!isPriceOpen)} className="accordion-header">
-                Price Range <div className={`accordian-icon ${isPriceOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-              </div>
-              {isPriceOpen && (
-                <div className="accordion-content">
-                  <label>
-                    <input
-                      type="radio"
-                      name="priceRange"
-                      value="0-100"
-                      checked={priceRange[0] === 0 && priceRange[1] === 100000}
-                      onChange={() => handleRadioChange('price', [0, 100000])}
-                    />
-                    All
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="priceRange"
-                      value="0-100"
-                      checked={priceRange[0] === 0 && priceRange[1] === 100}
-                      onChange={() => handleRadioChange('price', [0, 100])}
-                    />
-                    $0 - $100
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="priceRange"
-                      value="100-500"
-                      checked={priceRange[0] === 100 && priceRange[1] === 500}
-                      onChange={() => handleRadioChange('price', [100, 500])}
-                    />
-                    $100 - $500
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="priceRange"
-                      value="500-1000"
-                      checked={priceRange[0] === 500 && priceRange[1] === 1000}
-                      onChange={() => handleRadioChange('price', [500, 1000])}
-                    />
-                    $500 - $1000
-                  </label>
-                </div>
-              )}
-            </div>
-
-            <div className="accordion-section">
-              <div onClick={() => setIsCategoryOpen(!isCategoryOpen)} className="accordion-header">
-                Category <div className={`accordian-icon ${isCategoryOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-              </div>
-              {isCategoryOpen && (
-                <div className="accordion-content">
-                  <label>
-                    <input
-                      type="radio"
-                      name="category"
-                      value=""
-                      checked={selectedCategory === ''}
-                      onChange={() => handleRadioChange('category', '')}
-                    />
-                    All Categories
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="category"
-                      value="men's clothing"
-                      checked={selectedCategory === "men's clothing"}
-                      onChange={() => handleRadioChange('category', "men's clothing")}
-                    />
-                    Men's Clothing
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="category"
-                      value="women's clothing"
-                      checked={selectedCategory === "women's clothing"}
-                      onChange={() => handleRadioChange('category', "women's clothing")}
-                    />
-                    Women's Clothing
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="category"
-                      value="jewelery"
-                      checked={selectedCategory === "jewelery"}
-                      onChange={() => handleRadioChange('category', "jewelery")}
-                    />
-                    Jewelery
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="category"
-                      value="electronics"
-                      checked={selectedCategory === "electronics"}
-                      onChange={() => handleRadioChange('category', "electronics")}
-                    />
-                    Electronics
-                  </label>
-                </div>
-              )}
-            </div>
-
-
-            <div className="accordion-section">
-              <div onClick={() => setIsRatingOpen(!isRatingOpen)} className="accordion-header">
-                Rating  <div className={`accordian-icon ${isRatingOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-              </div>
-              {isRatingOpen && (
-                <div className="accordion-content">
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value="0"
-                      checked={selectedRating === 0}
-                      onChange={() => handleRadioChange('rating', 0)}
-                    />
-                    All Ratings
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value="4"
-                      checked={selectedRating === 4}
-                      onChange={() => handleRadioChange('rating', 4)}
-                    />
-                    4 stars & up
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value="3"
-                      checked={selectedRating === 3}
-                      onChange={() => handleRadioChange('rating', 3)}
-                    />
-                    3 stars & up
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value="2"
-                      checked={selectedRating === 2}
-                      onChange={() => handleRadioChange('rating', 2)}
-                    />
-                    2 stars & up
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="rating"
-                      value="1"
-                      checked={selectedRating === 1}
-                      onChange={() => handleRadioChange('rating', 1)}
-                    />
-                    1 star & up
-                  </label>
-                </div>
-              )}
-            </div>
-
-            <div className="accordion-section">
-              <div onClick={() => setIsSortOpen(!isSortOpen)} className="accordion-header">
-                Sort By  <div className={`accordian-icon ${isSortOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-              </div>
-              {isSortOpen && (
-                <div className="accordion-content">
-                  <label>
-                    <input
-                      type="radio"
-                      name="sort"
-                      value=""
-                      checked={sortOption === ''}
-                      onChange={() => handleRadioChange('sort', '')}
-                    />
-                    Relevance
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="sort"
-                      value="priceAsc"
-                      checked={sortOption === 'priceAsc'}
-                      onChange={() => handleRadioChange('sort', 'priceAsc')}
-                    />
-                    Price: Low to High
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="sort"
-                      value="priceDesc"
-                      checked={sortOption === 'priceDesc'}
-                      onChange={() => handleRadioChange('sort', 'priceDesc')}
-                    />
-                    Price: High to Low
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="sort"
-                      value="ratingDesc"
-                      checked={sortOption === 'ratingDesc'}
-                      onChange={() => handleRadioChange('sort', 'ratingDesc')}
-                    />
-                    Rating: High to Low
-                  </label>
-                </div>
-              )}
-            </div>
-
+            <PriceFilter priceRange={priceRange} handleRadioChange={handleRadioChange} />
+            <CategoryFilter selectedCategory={selectedCategory} handleRadioChange={handleRadioChange} />
+            <RatingFilter selectedRating={selectedRating} handleRadioChange={handleRadioChange} />
+            <SortFilter sortOption={sortOption} handleRadioChange={handleRadioChange} />
           </div>
-
         </div>
 
         <div className="search-list">
@@ -334,6 +120,7 @@ const Search = () => {
                 category={product.category}
                 title={product.title}
                 price={product.price}
+                rating={product.rating.rate}
               />
             ))
           ) : (

@@ -1,13 +1,15 @@
-import React from 'react';
 import { IoChevronDownSharp } from "react-icons/io5";
+import { useState } from 'react';
 
-const SortFilter = ({ isOpen, toggleOpen, sortOption, handleRadioChange }) => (
-  <div className="accordion-section">
-    <div onClick={toggleOpen} className="accordion-header">
-      Sort By  <div className={`accordian-icon ${isOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
-    </div>
-    {isOpen && (
-      <div className="accordion-content">
+const SortFilter = ({ sortOption, handleRadioChange }) => {
+  const [isSortOpen, setIsSortOpen] = useState(false);
+
+  return (
+    <div className="accordion-section">
+      <div onClick={() => setIsSortOpen(!isSortOpen)} className="accordion-header">
+        Sort By <div className={`accordian-icon ${isSortOpen ? 'rotate' : ''}`}><IoChevronDownSharp /></div>
+      </div>
+      <div className={`accordion-content ${isSortOpen ? 'open' : ''}`}>
         <label>
           <input
             type="radio"
@@ -49,8 +51,8 @@ const SortFilter = ({ isOpen, toggleOpen, sortOption, handleRadioChange }) => (
           Rating: High to Low
         </label>
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 export default SortFilter;

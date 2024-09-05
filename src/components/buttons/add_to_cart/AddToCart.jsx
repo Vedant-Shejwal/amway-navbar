@@ -6,9 +6,9 @@ import Toast from "../../../components/toastMessage/Toast"
 import { useState } from 'react';
 import { addCart } from '../../../redux/cart/cartActions';
 
-const AddToCart = ({ product }) => {
+const AddToCart = ({ product, setLoading }) => {
     const dispatch = useDispatch();
-    
+
     const [showToastMsg, setshowToastMsg] = useState({
         isShown: false,
         message: "",
@@ -30,9 +30,13 @@ const AddToCart = ({ product }) => {
         })
     }
     const handleAddToCart = () => {
-        dispatch(addCart(product));
-        // addCart(product)
-        handleshowToast("Product Added Successfully", "success")
+        setLoading(true)
+        setTimeout(() => {
+            dispatch(addCart(product));
+            // addCart(product)
+            handleshowToast("Product Added Successfully", "success")
+            setLoading(false)
+        }, 1000);
     };
 
     return (
