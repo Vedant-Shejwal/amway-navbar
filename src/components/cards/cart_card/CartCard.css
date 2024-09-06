@@ -6,6 +6,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px 1px rgb(0, 0, 0, 0.1);
     position: relative;
+    background-color: white;
 
 }
 
@@ -56,9 +57,11 @@
     justify-content: end;
     gap: 2px;
 }
-.product-cart-desc{
+
+.product-cart-desc {
     flex: 7;
 }
+
 .product-cart-text {
     color: #2c2c2c;
     cursor: pointer;
@@ -143,9 +146,11 @@
         display: block;
         margin-right: 20px;
     }
-    .product-cart-bottom{
+
+    .product-cart-bottom {
         align-items: center;
     }
+
     .remove-btn {
         align-self: end;
     }
@@ -154,6 +159,10 @@
 @media screen and (max-width:667px) {
     .cart-card {
         padding: 0;
+    }
+
+    .cart-overlay {
+        margin: 0 !important;
     }
 
     .cart-top-left {

@@ -16,7 +16,7 @@ const Pdp = () => {
         try {
             const response = await axiosInstance.get("/products/" + id);
             if (response.data) {
-                setProduct(response.data);
+                setProduct(response.data.product);
                 setLoading(false); 
             }
         } catch (error) {

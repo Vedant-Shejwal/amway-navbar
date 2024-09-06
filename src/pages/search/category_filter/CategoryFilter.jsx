@@ -1,7 +1,7 @@
 import { IoChevronDownSharp } from "react-icons/io5";
 import { useState } from 'react';
 
-const CategoryFilter = ({ selectedCategory, handleRadioChange }) => {
+const CategoryFilter = ({ categories, selectedCategory, handleRadioChange }) => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   return (
@@ -20,46 +20,18 @@ const CategoryFilter = ({ selectedCategory, handleRadioChange }) => {
           />
           All Categories
         </label>
-        <label>
-          <input
-            type="radio"
-            name="category"
-            value="men's clothing"
-            checked={selectedCategory === "men's clothing"}
-            onChange={() => handleRadioChange('category', "men's clothing")}
-          />
-          Men's Clothing
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="category"
-            value="women's clothing"
-            checked={selectedCategory === "women's clothing"}
-            onChange={() => handleRadioChange('category', "women's clothing")}
-          />
-          Women's Clothing
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="category"
-            value="jewelery"
-            checked={selectedCategory === "jewelery"}
-            onChange={() => handleRadioChange('category', "jewelery")}
-          />
-          Jewelery
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="category"
-            value="electronics"
-            checked={selectedCategory === "electronics"}
-            onChange={() => handleRadioChange('category', "electronics")}
-          />
-          Electronics
-        </label>
+        {categories.map((category) => (
+          <label key={category}>
+            <input
+              type="radio"
+              name="category"
+              value={category}
+              checked={selectedCategory === category}
+              onChange={() => handleRadioChange('category', category)}
+            />
+            {category}
+          </label>
+        ))}
       </div>
     </div>
   );

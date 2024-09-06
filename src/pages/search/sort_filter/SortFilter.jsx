@@ -40,7 +40,7 @@ const SortFilter = ({ sortOption, handleRadioChange }) => {
           />
           Price: High to Low
         </label>
-        <label>
+        {/* <label>
           <input
             type="radio"
             name="sort"
@@ -49,7 +49,7 @@ const SortFilter = ({ sortOption, handleRadioChange }) => {
             onChange={() => handleRadioChange('sort', 'ratingDesc')}
           />
           Rating: High to Low
-        </label>
+        </label> */}
       </div>
     </div>
   );

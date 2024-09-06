@@ -49,7 +49,7 @@ const CartCard = ({ id, image, quantity, category, title, price, totalPrice }) =
 
     return (
         <div className='cart-card'>
-            {loading && (<div style={{
+            {loading && (<div className="cart-overlay" style={{
                 width: '100%', height: '100%', justifyContent: 'center', margin: '-20px -20px',
                 alignItems: 'center', display: 'flex', padding: '-20px', borderRadius: '10px',
                 backdropFilter: 'blur(2px)', backgroundColor: 'rgba(0,0,0,0.1)',

@@ -23,9 +23,9 @@ const Home = () => {
 
   const getAllProduct = async () => {
     try {
-      const response = await axiosInstance.get("/products?limit=5");
+      const response = await axiosInstance.get("/products");
       if (response.data) {
-        setAllProduct(response.data);
+        setAllProduct(response.data.products);
       }
     } catch (error) {
       console.log("error : ", error);
@@ -34,9 +34,9 @@ const Home = () => {
 
   const getAllCategory = async () => {
     try {
-      const response = await axiosInstance.get("/products/categories");
+      const response = await axiosInstance.get("/products/category");
       if (response.data) {
-        setAllCategory(response.data);
+        setAllCategory(response.data.categories);
       }
     } catch (error) {
       console.log("error : ", error);
@@ -97,7 +97,7 @@ const Home = () => {
                 category={product.category}
                 title={product.title}
                 price={product.price}
-                rating={product.rating.rate}
+                // rating={product.rating.rate}
               />
             ))
           ) : (

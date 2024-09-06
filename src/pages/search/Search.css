@@ -85,6 +85,7 @@
     grid-row-gap: 40px;
     grid-column-gap: 2px;
     padding: 20px;
+    margin-top: -50px;
 }
 
 @media (max-width: 1350px) {

@@ -19,17 +19,29 @@ const Search = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [allCategory,setAllCategory] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedRating, setSelectedRating] = useState(0);
   const [sortOption, setSortOption] = useState('');
   const [loading, setLoading] = useState(true)
+  
+  const getAllCategory = async () => {
+    try {
+      const response = await axiosInstance.get("/products/category");
+      if (response.data) {
+        setAllCategory(response.data.categories);
+      }
+    } catch (error) {
+      console.log("error : ", error);
+    }
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axiosInstance.get("/products");
         if (response.data) {
-          setAllProducts(response.data);
+          setAllProducts(response.data.products);
           setLoading(false)
         }
       } catch (error) {
@@ -39,6 +51,7 @@ const Search = () => {
     };
 
     fetchProducts();
+    getAllCategory();
   }, []);
 
   useEffect(() => {
@@ -46,8 +59,8 @@ const Search = () => {
       (product.title.toLowerCase().includes(query.toLowerCase()) ||
         product.category.toLowerCase().includes(query.toLowerCase())) &&
       (product.price >= priceRange[0] && product.price <= priceRange[1]) &&
-      (selectedCategory ? product.category === selectedCategory : true) &&
-      (product.rating.rate >= selectedRating)
+      (selectedCategory ? product.category === selectedCategory : true) 
+      // && (product.rating.rate >= selectedRating)
     );
 
     if (sortOption === 'priceAsc') {
@@ -104,7 +117,7 @@ const Search = () => {
               <div onClick={handleClearAll} className="clear-all-button"><u>Reset</u></div>
             </div>
             <PriceFilter priceRange={priceRange} handleRadioChange={handleRadioChange} />
-            <CategoryFilter selectedCategory={selectedCategory} handleRadioChange={handleRadioChange} />
+            <CategoryFilter categories={allCategory} selectedCategory={selectedCategory} handleRadioChange={handleRadioChange} />
             <RatingFilter selectedRating={selectedRating} handleRadioChange={handleRadioChange} />
             <SortFilter sortOption={sortOption} handleRadioChange={handleRadioChange} />
           </div>
@@ -120,7 +133,7 @@ const Search = () => {
                 category={product.category}
                 title={product.title}
                 price={product.price}
-                rating={product.rating.rate}
+                // rating={product.rating.rate}
               />
             ))
           ) : (

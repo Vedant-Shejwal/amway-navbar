@@ -14,9 +14,9 @@ const Plp = () => {
 
     const getAllProduct = async () => {
         try {
-            const response = await axiosInstance.get("/products/category/" + id);
+            const response = await axiosInstance.get("/products/category?type=" + id);
             if (response.data) {
-                const duplicatedProducts = [...response.data, ...response.data, ...response.data];
+                const duplicatedProducts = [...response.data.products, ...response.data.products];
                 setAllProduct(duplicatedProducts);
                 setLoading(false);
             }
@@ -28,10 +28,10 @@ const Plp = () => {
 
     const loadMoreProducts = async () => {
         try {
-            const response = await axiosInstance.get("/products/category/" + id);
+            const response = await axiosInstance.get("/products/category?type=" + id);
             if (response.data) {
-                const newProducts = [...response.data];
-                setAllProduct(prevProducts => [...prevProducts, ...newProducts, ...newProducts]);
+                const newProducts = [...response.data.products];
+                setAllProduct(prevProducts => [...prevProducts, ...newProducts]);
             }
         } catch (error) {
             console.log("error : ", error);
@@ -68,7 +68,7 @@ const Plp = () => {
                             category={product.category}
                             title={product.title}
                             price={product.price}
-                            rating={product.rating.rate}
+                            // rating={product.rating.rate}
                         />
                     ))
                 ) : (
